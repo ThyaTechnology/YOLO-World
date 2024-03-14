@@ -80,10 +80,7 @@ class HuggingCLIPLanguageBackbone(BaseModule):
         return self.cache
 
     def forward(self, text: List[List[str]]) -> Tensor:
-        if self.training:
-            return self.forward_text(text)
-        else:
-            return self.forward_cache(text)
+        self.forward_text(text)
 
     def forward_tokenizer(self, texts):
         if not hasattr(self, 'text'):
